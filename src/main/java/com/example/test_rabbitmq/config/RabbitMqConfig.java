@@ -21,10 +21,10 @@ public class RabbitMqConfig {
     @Bean(name = "testQueue")
     public TopicExchange lazyExchange() {
         Map<String, Object> pros = new HashMap<>();
-        //设置交换机支持延迟消息推送
+        // 设置交换机支持延迟消息推送
         pros.put("x-delayed-type", "direct");
         TopicExchange exchange = new TopicExchange("testQueue", true, false, pros);
-        // 这一行是重点，指定交换机类型
+        // 指定交换机类型
         exchange.setDelayed(true);
         return exchange;
     }
