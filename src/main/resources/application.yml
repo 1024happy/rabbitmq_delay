@@ -1,0 +1,40 @@
+spring:
+  rabbitmq:
+    # 主机
+    host: 127.0.0.1
+    # 用户名
+    username: guest
+    # 密码
+    password: guest
+    # 端口
+    port: 5672
+    # 开启发送端消息确认机制
+    publisher-confirm-type: correlated
+    # 开启发送端消息确认机制
+    publisher-returns: true
+    # 虚拟主机
+    virtual-host: /
+    # 消费者配置
+    listener:
+      # 消费者监听的队列
+      simple:
+        # 消费者手动确认消息
+        acknowledge-mode: manual
+        # 消费者最小并发数
+        concurrency: 1
+        # 消费者最大并发数
+        max-concurrency: 5
+        # 消费者一次处理的消息数量
+        prefetch: 1
+        # 重试
+        retry:
+          # 是否开启重试
+          enabled: true
+          # 最大重试次数
+          max-attempts: 5
+          # 重试时间间隔（单位毫秒）
+          initial-interval: 5000ms
+          #间隔时间乘子，间隔时间*乘子=下一次的间隔时间，最大不能超过设置的最大间隔时间
+          multiplier: 2
+        # 消费者默认的重试队列
+        default-requeue-rejected: true
