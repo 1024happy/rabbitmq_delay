@@ -35,6 +35,6 @@ public class RabbitMqController {
         map.put("orderId", System.currentTimeMillis());
         // 发送消息 延迟2秒
         RabbitMqUtils.sendDelayMessage(rabbitTemplate, 2000, objectMapper.writeValueAsString(map), System.currentTimeMillis());
-        log.info("发送延迟队列消息成功！消息内容：{}", map);
+        log.info("======>>>>>>发送延迟队列消息成功！消息内容：{}", map);
     }
 }
